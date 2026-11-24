@@ -3,11 +3,14 @@
 ![AWS](https://img.shields.io/badge/AWS-Step%20Functions-FF9900?logo=amazonaws&logoColor=white)
 ![Serverless](https://img.shields.io/badge/Serverless-Orchestration-ED7100)
 ![Level](https://img.shields.io/badge/Level-Intermediate-blue)
-![Quiz](https://img.shields.io/badge/Quiz-5%20questions-green)
 
 ## TL;DR
 
 Stop chaining Lambdas together with SQS duct tape and tribal knowledge. **AWS Step Functions** turns a multi-step process into a visual, retryable, auditable state machine: each execution is a traceable run with the exact input/output of every step. **Standard** workflows for long-running, exactly-once sagas (order processing, approvals); **Express** for high-volume, short event processing (IoT ingestion, stream transforms).
+
+## 🌍 In plain words — what is this, really?
+
+Think about a busy post office sorting centre where one parcel must pass through several stations in order: check the address, weigh it, charge the sender, load the right truck, and send a delivery note. If one station is busy or makes a mistake, someone must retry that step without losing the parcel or starting the whole journey again. Step Functions does that job for software tasks: it is the supervisor with a checklist who passes work from one step to the next and remembers exactly where every job stands. If a step fails, it retries or follows a planned fallback instead of leaving the process half-finished and invisible. In technical terms, that checklist is a state machine, each station is a state, and services like Lambda do the actual work at each step.
 
 ## The problem it solves
 
@@ -102,12 +105,7 @@ aws-step-functions-guide/
 ├── README.md                 # this guide
 ├── architecture.svg          # classic AWS reference-style diagram
 ├── order-workflow.asl.json   # deployable state machine (Amazon States Language)
-└── quiz.md                   # 5 questions + collapsed answers
 ```
-
-## Quiz teaser
-
-Think you've got it? [`quiz.md`](./quiz.md) has 5 questions: Standard vs Express at 2M events/hour, `Retry` vs `Catch`, why idempotency is non-negotiable, the saga pattern in this workflow, and when to still pick EventBridge. Answers are collapsed — no peeking. 👀
 
 ## Further reading
 
